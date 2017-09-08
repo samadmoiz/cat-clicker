@@ -4,21 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Cat clicker</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      position: relative;
-      box-sizing: border-box;
-    }
-
-    .cat {
-      float: left;
-    }
-    .cat__image {
-      width: 300px;
-    }
-  </style>
+  <link rel="stylesheet" href="styles/app.css">
 </head>
 <body>
  <!--  <figure>
@@ -31,7 +17,29 @@
      <h3></h3>
    </div>
  </div> -->
- <div class="cats"></div>
+  <div class="cats group">
+    <h2 class="cats__heading">Cats Click Counter</h2>
+    <div class="col-4">
+      <ul class="cats__list">
+<!--         <li class="cats__item">List 1</li>
+        <li class="cats__item">List 2</li>
+        <li class="cats__item cats__item--active">List 3</li>
+        <li class="cats__item">List 4</li>
+        <li class="cats__item">List 5</li>
+        <li class="cats__item">List 6</li>
+        <li class="cats__item">List 7</li>
+        <li class="cats__item">List 8</li>
+        <li class="cats__item">List 9</li>
+        <li class="cats__item">List 10</li> -->
+      </ul>
+    </div>
+    <div class="col-8">
+      <h3 class="cats__name">Kitten</h3>
+      <p class="cats__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+      <img class="cats__image" src="images/cat1.jpg" alt="A Cute Cat">
+      <div class="cats__count">Count: 0</div>
+    </div>
+  </div>
   <script src="scripts/app.js"></script>
 </body>
 </html>

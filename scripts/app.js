@@ -9,29 +9,27 @@ const cats = [
   }
 ];
 
-const catsDiv = document.querySelector('.cats');
+const catList = document.querySelector('.cats__list');
+const catImage = document.querySelector('.cats__image');
+const catTitle = document.querySelector('.cats__name');
+const catCount = document.querySelector('.cats__count');
 
-function attachListener(catDom) {
+cats.forEach(function(cat, i) {
   let count = 0;
-  const imgBtn = catDom.querySelector('.cat__image');
-  imgBtn.addEventListener('click', function() {
+  const catItem = document.createElement('li');
+  catItem.classList.add('cats__item');
+  catItem.appendChild(document.createTextNode(cat.name));
+  catList.appendChild(catItem);
+
+  catItem.addEventListener('click', function(e) {
+    catList
+    .querySelectorAll('.cats__item')
+    .forEach(function(catItem) {
+      catItem.classList.remove('cats__item--active')
+    })
+    catItem.classList.add('cats__item--active');
     count += 1;
-    const countDiv = catDom.querySelector('.cat__count')
-    countDiv.textContent = `Count: ${count}`;
+    catImage.src = cat.src;
+    catCount.textContent = `Count: ${count}`;
   })
-}
-
-cats.forEach(function (cat, i) {
-  const catDiv = document.createElement('div');
-  catDiv.classList.add('cat');
-
-  const markup = `
-    <h3>${cat.name}</h3>
-    <img class="cat__image" src="${cat.src}" />
-    <div class="cat__count">Count: 0</div>
-  `;
-  catDiv.innerHTML = markup;
-  catsDiv.appendChild(catDiv);
-
-  attachListener(catDiv);
-})
+});
