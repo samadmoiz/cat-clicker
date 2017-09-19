@@ -85,3 +85,12 @@ img, video, object, canvas {
 .cats__count {
   font-size: 14px;
 }
+
+/* admin */
+.cats__admin {
+  position: fixed;
+  width: 200px;
+  height: auto;
+  top: 0;
+  right: 0;
+}

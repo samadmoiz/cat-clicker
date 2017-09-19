@@ -7,37 +7,38 @@
   <link rel="stylesheet" href="styles/app.css">
 </head>
 <body>
- <!--  <figure>
-   <img src="images/cat1.jpg" class="img-btn" alt="Cute Cat for Inspiration">
-   <figcaption>Cute Cat for Inspiration</figcaption>
- </figure>
- <div class="count">Click Count: 0</div>
- <div class="cats">
-   <div class="cat" id="cat-0">
-     <h3></h3>
-   </div>
- </div> -->
   <div class="cats group">
     <h2 class="cats__heading">Cats Click Counter</h2>
     <div class="col-4">
       <ul class="cats__list">
-<!--         <li class="cats__item">List 1</li>
-        <li class="cats__item">List 2</li>
-        <li class="cats__item cats__item--active">List 3</li>
-        <li class="cats__item">List 4</li>
-        <li class="cats__item">List 5</li>
-        <li class="cats__item">List 6</li>
-        <li class="cats__item">List 7</li>
-        <li class="cats__item">List 8</li>
-        <li class="cats__item">List 9</li>
-        <li class="cats__item">List 10</li> -->
       </ul>
     </div>
     <div class="col-8">
+      <button class="cats__button cats__button--admin">Admin</button>
       <h3 class="cats__name">Kitten</h3>
       <p class="cats__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
       <img class="cats__image" src="images/cat1.jpg" alt="A Cute Cat">
       <div class="cats__count">Count: 0</div>
+    </div>
+    <div class="cats__admin">
+      <h2>Cats Admin</h2>
+      <label for="cats-input-name">
+        Name:
+        <input type="text" name="cats-input-name">
+      </label>
+      <br>
+      <label for="cats-input-url">
+        URL:
+        <input type="text" name="cats-input-url">
+      </label>
+      <br>
+      <label for="cats-input-count">
+        Count:
+        <input type="text" name="cats-input-count">
+      </label>
+      <br>
+      <button class="cats__button cats__button--cancel">Clear</button>
+      <button class="cats__button cats__button--submit">Save</button>
     </div>
   </div>
   <script src="scripts/app.js"></script>
