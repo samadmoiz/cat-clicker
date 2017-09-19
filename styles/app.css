@@ -94,3 +94,6 @@ img, video, object, canvas {
   top: 0;
   right: 0;
 }
+.hide {
+  display: none;
+}

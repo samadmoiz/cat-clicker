@@ -189,6 +189,7 @@ const octopus = {
     // set our views to initiliaze
     catView.init();
     listView.init();
+    adminView.init();
   },
   getAllCats() {
     return model.cats;
@@ -234,7 +235,6 @@ const catView = {
 
 }
 
-
 const listView = {
   init() {
     // store pointers to our DOM elements for easy access later
@@ -264,6 +264,9 @@ const listView = {
         return function(e) {
           octopus.setCurrentCat(cat);
           catView.render();
+          
+          // update admin fields
+          adminView.render();
         }
       }(index, cat));
 
@@ -271,5 +274,49 @@ const listView = {
   }
 }
 
+
+const adminView = {
+  init() {
+    this.adminBtn = document.querySelector('.cats__button--admin');
+    this.catsAdminElm = document.querySelector('.cats__admin');
+    this.adminBtn.addEventListener('click', () => {
+      this.catsAdminElm.classList.toggle('hide');
+    });
+    this.render();
+  },
+  render() {
+    this.inputName = document.querySelector('#cats-input-name');
+    this.inputUrl = document.querySelector('#cats-input-url');
+    this.inputCount = document.querySelector('#cats-input-url');
+    
+    const currentCat = octopus.getCurrentCat();
+    this.inputName.value = currentCat.name;
+    this.inputUrl.value = currentCat.imgSrc;
+    this.inputCount.value = currentCat.clickCount;
+    
+/*    const html = `
+      <h2>Cats Admin</h2>
+      <label for="cats-input-name">
+        Name:
+        <input type="text" name="cats-input-name">
+      </label>
+      <br>
+      <label for="cats-input-url">
+        URL:
+        <input type="text" name="cats-input-url">
+      </label>
+      <br>
+      <label for="cats-input-count">
+        Count:
+        <input type="text" name="cats-input-count">
+      </label>
+      <br>
+      <button class="cats__button cats__button--cancel">Clear</button>
+      <button class="cats__button cats__button--submit">Save</button>
+    `;
+    const catsAdminElm = document.querySelector('.cats__admin');
+    catsAdminElem.innerHTML = html;*/
+  }
+}
 
 octopus.init();
