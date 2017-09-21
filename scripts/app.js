@@ -207,6 +207,12 @@ const octopus = {
   incrementCounter() {
     model.currentCat.clickCount++;
     catView.render();
+  },
+
+  editCurrentCat(name, url, count) {
+    model.currentCat.name = name;
+    model.currentCat.imgSrc = url;
+    model.currentCat.clickCount = count;
   }
 }
 
@@ -264,7 +270,7 @@ const listView = {
         return function(e) {
           octopus.setCurrentCat(cat);
           catView.render();
-          
+
           // update admin fields
           adminView.render();
         }
@@ -277,23 +283,46 @@ const listView = {
 
 const adminView = {
   init() {
-    this.adminBtn = document.querySelector('.cats__button--admin');
+    // get all elements
+    // admin wrapper and btn
     this.catsAdminElm = document.querySelector('.cats__admin');
+    this.adminBtn = document.querySelector('.cats__button--admin');
+
+    this.inputName = document.querySelector('#cats-input-name');
+    this.inputUrl = document.querySelector('#cats-input-url');
+    this.inputCount = document.querySelector('#cats-input-count');
+
+    this.submitBtn = document.querySelector('.cats__button--submit');
+    this.cancelBtn = document.querySelector('.cats__button--cancel');
+
+    this.hidden = true;
+
     this.adminBtn.addEventListener('click', () => {
-      this.catsAdminElm.classList.toggle('hide');
+      if (this.hidden) {
+        this.catsAdminElm.removeAttribute('hidden');
+      } else {
+        this.catsAdminElm.setAttribute('hidden', true)
+      }
+      this.hidden = !this.hidden;
     });
     this.render();
   },
   render() {
-    this.inputName = document.querySelector('#cats-input-name');
-    this.inputUrl = document.querySelector('#cats-input-url');
-    this.inputCount = document.querySelector('#cats-input-url');
-    
+    // get current cat
+    // set current cat values to input fields
     const currentCat = octopus.getCurrentCat();
     this.inputName.value = currentCat.name;
     this.inputUrl.value = currentCat.imgSrc;
     this.inputCount.value = currentCat.clickCount;
-    
+
+    this.submitBtn.addEventListener('click', () => {
+      octopus.editCurrentCat(this.inputName.value,
+                             this.inputUrl.value,
+                             this.inputCount.value);
+      listView.render();
+      catView.render();
+    });
+
 /*    const html = `
       <h2>Cats Admin</h2>
       <label for="cats-input-name">

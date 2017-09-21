@@ -94,6 +94,18 @@ img, video, object, canvas {
   top: 0;
   right: 0;
 }
-.hide {
-  display: none;
+.cats__button--admin {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  background: transparent;
+  border: 0;
+  padding: 10px;
+  cursor: pointer;
+  color: #111;
 }
